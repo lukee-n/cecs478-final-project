@@ -3,8 +3,7 @@
 <br>Luke Nguyen**
 
 A reproducible, Docker-based pipeline for analyzing WEP-encrypted 802.11 traffic, extracting IVs, 
-performing offline key-recovery attacks, and generating metrics.
-<br><br>**Demo:** link
+performing offline key-recovery attacks, and generating metrics. [Demo](https://youtu.be/8dGqVixl5js)
 
 ## Features
 - PCAP parsing using Scapy
@@ -42,7 +41,7 @@ This performs:
 
 ## Output Artifacts
 
-### Metrics JSON
+### Metrics JSON:
 artifacts/release/metrics/metrics.json
 
 Example fields:
@@ -57,7 +56,7 @@ Example fields:
   "exit_code": 0
 }
 
-### Log File
+### Log File:
 artifacts/release/logs/pipeline.log
 Contains all pipeline log messages captured via log().
 
