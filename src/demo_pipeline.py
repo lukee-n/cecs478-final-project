@@ -9,6 +9,15 @@ from src.key_recovery import recover_key_from_pcap
 from src.metrics import save_metrics
 
 
+LOG_PATH = "artifacts/release/logs/pipeline.log"
+os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
+
+def log(msg: str):
+    print(msg)
+    with open(LOG_PATH, "a") as f:
+        f.write(msg + "\n")
+
+
 def main():
     """
     End-to-end demo pipeline:
@@ -24,23 +33,23 @@ def main():
     if not os.path.exists(pcap_path):
         raise FileNotFoundError(f"PCAP file not found: {pcap_path}")
 
-    print(f"[demo] Starting WEP forensics pipeline on: {pcap_path}")
+    log(f"[demo] Starting WEP forensics pipeline on: {pcap_path}")
     start = time.time()
 
     # 1. Parse PCAP
-    print("[demo] Parsing PCAP...")
+    log("[demo] Parsing PCAP...")
     packets = parse_pcap(pcap_path)
 
     # 2. Extract IVs
-    print("[demo] Extracting WEP IVs...")
+    log("[demo] Extracting WEP IVs...")
     ivs = extract_ivs(packets)
     
     # 3. Run key recovery (aircrack-ng wrapper)
-    print("[demo] Running key recovery via aircrack-ng...")
+    log("[demo] Running key recovery via aircrack-ng...")
     key, recovery_info = recover_key_from_pcap(pcap_path)
 
     elapsed = time.time() - start
-    print(f"[demo] Pipeline finished in {elapsed:.2f} seconds")
+    log(f"[demo] Pipeline finished in {elapsed:.2f} seconds")
 
     # 4. Assemble metrics
     metrics = {
