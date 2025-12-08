@@ -5,7 +5,7 @@ from typing import Optional, Tuple, Dict
 
 AIRCRACK_CMD = "aircrack-ng"
 
-def run_recovery(ivs):
+def recover_key_from_pcap(pcap_path: str) -> Tuple[Optional[str], Dict]:
     """
     Run aircrack-ng against the given PCAP and try to recover a WEP key.
 
