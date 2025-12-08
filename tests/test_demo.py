@@ -16,7 +16,7 @@ METRICS_PATH = ARTIFACTS_DIR / "metrics.json"
 
 def _clean_metrics_dir():
     if ARTIFACTS_DIR.exists():
-        shutil.rmtree(ARTIFACTS_DIR)
+        shutil.rmtree(ARTIFACTS_DIR, ignore_errors=True)
 
 
 def test_demo_creates_metrics():
