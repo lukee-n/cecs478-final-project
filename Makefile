@@ -7,7 +7,7 @@ up:
 	docker compose up -d --build
 
 demo: up
-	docker compose run wep python3 src/demo_pipeline.py
+	docker compose run wep python3 src/demo_pipeline.py data/sample.pcap
 
 run-parser:
 	docker compose run wep python3 src/parser.py data/sample.pcap
