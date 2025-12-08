@@ -4,7 +4,7 @@
 
 A reproducible, Docker-based pipeline for analyzing WEP-encrypted 802.11 traffic, extracting IVs, 
 performing offline key-recovery attacks, and generating metrics.
-<br>**Demo:** link
+<br><br>**Demo:** link
 
 ## Features
 - PCAP parsing using Scapy
@@ -22,10 +22,11 @@ performing offline key-recovery attacks, and generating metrics.
 - (For local testing only) Python 3.10+ and pip
 
 ## Installation (WSL / Linux / MacOS)
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+```bash
+git clone https://github.com/lukee-n/cecs478-final-project.git
+cd cecs478-final-project.git
 make bootstrap
-
+```
 ## Quick Start (Vertical Slice Demo)
 This runs the end-to-end WEP forensics pipeline inside Docker.
 ```bash
