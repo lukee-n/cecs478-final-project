@@ -8,14 +8,14 @@ def extract_ivs(packets) -> List[str]:
   """
   ivs: List[str] = []
 
-    for p in packets:
-        if p.haslayer(Dot11WEP):
-            wep_layer = p[Dot11WEP]
-            iv_bytes = bytes(wep_layer.iv)  # 3 bytes
+  for p in packets:
+      if p.haslayer(Dot11WEP):
+          wep_layer = p[Dot11WEP]
+          iv_bytes = bytes(wep_layer.iv)  # 3 bytes
 
-            if len(iv_bytes) == 3:
-                iv_str = ":".join(f"{b:02x}" for b in iv_bytes)
-                ivs.append(iv_str)
+          if len(iv_bytes) == 3:
+              iv_str = ":".join(f"{b:02x}" for b in iv_bytes)
+              ivs.append(iv_str)
 
     print(f"[iv_extraction] Extracted {len(ivs)} WEP IVs")
     return ivs
